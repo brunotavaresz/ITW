@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\NovaPasta - Cópia %282%29\**" />
+    <Content Remove="wwwroot\NovaPasta - Cópia %282%29\**" />
+    <EmbeddedResource Remove="wwwroot\NovaPasta - Cópia %282%29\**" />
+    <None Remove="wwwroot\NovaPasta - Cópia %282%29\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\aulas\aula 03\estudar.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\lib\font-awesome\dist\css\" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties libman_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
+</Project>

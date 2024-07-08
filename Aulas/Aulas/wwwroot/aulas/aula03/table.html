@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <style>
+        
+        body, h1, legend, dt, select,textarea, input {font-family:'Open Sans', sans-serif}
+        dt{width: 120px; float: left; clear: left;}
+        dd{float: left; width: 15px;}
+        input{margin:3px; }
+        select{width: 400px; height: 25px; margin: 3px}
+        input[type=submit], input[type=reset] { padding: 0.7rem 0.8rem; font-size: 1rem; }
+
+    </style>
+</head>
+<body>
+    
+    <h1> Informação pessoal </h1>
+    <fieldset>
+        <legend>Informação Pessoal</legend>
+    <form name="PersonData" action="http://192.168.160.36/FormEcho.aspx" method="post">
+    
+    <dl>
+        <dt>Curso:
+            <dd>
+                <select name="Curso">
+                <option value="LEI" selected="selected">Licenciatura Engenharia Informática</option>
+                <option value="2">Mestrado Integrado em Engenharia de Computadores e Telemática</option>
+                <option value="3">Mestrado Integrado em Engenharia Eletrónica e Computadores</option>
+                <option value="4">Other</option>
+                </select>
+            </dd>
+        </dt>
+    </dl>
+        <dl>
+            <dt>Nome:</dt> 
+            <dd> <input type="text" name="FirstName" placeholder="Nome" /> </dd>
+        </dl>
+        <dl>
+             <dt>Sobrenome:</dt> 
+             <dd> <input type="text" name="LastName" placeholder="Sobrenome" /> </dd>
+        </dl>
+        <dl>
+        <dt>Palavra-Passe: </dt>
+        <dd> <input type="password" name="password" placeholder="Digite a sua palavra-passe" /> </dd>
+        </dl>
+    </fieldset>
+
+    <fieldset>
+        <legend>Comentários</legend>
+        <dd>
+        <textarea name="Comments" rows="4" cols="80" placeholder="Insira os seus comentários"></textarea>
+    </fieldset>
+        </dd>
+        <dv width="50%">
+            <fieldset>
+                <legend>Meios de transporte</legend>
+                <input type="checkbox" name="vehicle" value="Bicicleta">Bicicleta<br />
+                <input type="checkbox" name="vehicle" value="Carro">Carro<br />
+                <input type="checkbox" name="vehicle" value="Comboio">Comboio
+            </fieldset>
+        </dv>
+        <dv>
+            <fieldset>
+                <legend>Cor Preferida</legend>
+                <input type="checkbox" name="Color" value="Azul">Azul<br />
+                <input type="checkbox" name="Color" value="Verde">Verde<br />
+                <input type="checkbox" name="Color" value="Vermelho">Vermelho<br />
+                <input type="checkbox" name="Color" value="Outra">Outra
+            </fieldset>
+        </dv>
+
+        <div style="text-align: center;">
+            <input name="Button" type="Submit" />
+            <input type="reset" name="resetBtn" value="Reset" />
+        </div>
+        </form>
+    
+</body>
+</html>

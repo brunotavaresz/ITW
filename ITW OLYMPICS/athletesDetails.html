@@ -1,0 +1,332 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>ITW 2022/23 - Olympic Athletes edition Details</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css/myCSS.css" />
+  <link rel="stylesheet" href="css/hover.css" />
+  <link rel="stylesheet" href="css/cards.css" />
+  <link rel="stylesheet" href="css/scrollToTop.css" />
+  <link rel="stylesheet" href="css/socialMedia.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.min.css" integrity="sha512-fYyZwU1wU0QWB4Yutd/Pvhy5J1oWAwFXun1pt+Bps04WSe4Aq6tyHlT4+MHSJhD8JlLfgLuC4CbCnX5KHSjyCg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.min.css" integrity="sha512-ENrTWqddXrLJsQS2A86QmvA17PkJ0GVm1bqj5aTgpeMAfDKN2+SIOLpKG8R/6KkimnhTb+VW5qqUHB/r1zaRgg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="js/darkMode.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html" tabindex="Olympics"><img src="img/Olympic_rings.svg" height="24" /></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="athletes.html"><i class="fa-solid fa-user text-warning"></i> Athletes</a></li>
+          <li class="nav-item"><a class="nav-link" aria-current="page" href="competitions.html"><i class="fa-solid fa-trophy"></i> Competitions</a></li>
+          <li class="nav-item"><a class="nav-link" aria-current="page" href="countries.html"><i class="fa-solid fa-flag text-danger"></i> Countries</a></li>
+          <li class="nav-item"><a class="nav-link" aria-current="page" href="games.html"><i class="fa-solid fa-map-marker text-success"></i> Games</a></li>
+          <li class="nav-item"><a class="nav-link" aria-current="page" href="modalities.html"><i class="fa-solid fa-soccer-ball text-primary"></i> Modalities</a></li>
+          <li class="nav-item"><a class="nav-link" aria-current="page" href="statistics.html"><i class="fa-solid fa-chart-simple"></i> Statistics</a></li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" aria-current="page" href="search.html"><i class="fa-solid fa-search"></i> Search</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-heart text-danger"></i> Favorites
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="favorites.html#athletes"><i class="fa-solid fa-user"></i> Athletes</a></li>
+              <li><a class="dropdown-item" href="favorites.html#competitions"><i class="fa-solid fa-trophy"></i> Competitions</a></li>
+              <li><a class="dropdown-item" href="favorites.html#countries"><i class="fa-solid fa-flag"></i> Countries</a></li>
+              <li><a class="dropdown-item" href="favorites.html#games"><i class="fa-solid fa-map-marker"></i> Games</a></li>
+              <li><a class="dropdown-item" href="favorites.html#modalities"><i class="fa-solid fa-soccer-ball"></i> Modalities</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Scroll to top button -->
+  <a class="btn btn-dark btn-lg" id="scrollToTop" data-bind="click: scrollToTop">
+    <i class="fa-solid fa-arrow-up"></i><span id="scrollToTopText">&nbsp;&nbsp;Scroll to top</span>
+  </a>
+
+  <!-- Work Area-->
+  <div class="container">
+    <div class="row mb-3 pt-2 d-flex align-items-center">
+      <div class="col-auto">
+        <div style="width: 2.5rem; height: 2.5rem;" class="btn btn-hover bg-body-secondary border rounded center" data-bind="click: goBack"><i class="fa-solid text-body fa-arrow-left fa-lg"></i></div>
+      </div>
+      <div class="col ps-0">
+        <h3 class="m-0 px-0 py-3" data-bind="text:displayName"></h3>
+      </div>
+    </div>
+
+    <div class="row g-3 d-flex align-items-center mb-sm-0 mb-lg-3">
+      <div class="col-xs-12 col-lg-4">
+        <img class="card-hover rounded border bg-body-tertiary w-100" data-bind="visible: Photo, attr:{src: Photo}" />
+        <div class="card-hover rounded border bg-body-tertiary w-100 center" data-bind="hidden: Photo" style="height: 15rem;">
+          <div class="text-center">
+            <i class="fa-solid fa-user fa-4x mb-3"></i>
+            <p class="mb-0">Image not available</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <p class="mb-0">Athlete ID: <span data-bind="text: Id"></span></p>
+        <h2 class="mb-3 fw-bold" data-bind="text: Name"></h2>
+        <a class="btn btn-hover bg-body-secondary border rounded center text-decoration-none mb-3 text-body" style="width: fit-content" data-bind="attr: {href: OlympediaLink}"><i class="fa-solid text-body fa-link"></i>&nbsp;&nbsp;Check info at Olympedia.org</a>
+        <button class="btn btn-hover bg-body-secondary border rounded center text-body" data-bind="click: function (data, event) {setAthletesFavorites(Id())}">
+          <i class="fa-solid fa-heart text-body" data-bind="attr: {id: 'fav_athletes_' + Id()}"></i>&nbsp;&nbsp;Favorite
+        </button>
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card card-hover py-3 text-center bg-body-tertiary h-100 center">
+          <p class="card-text mb-1">ID</p>
+          <h3 class="card-title mb-0 text-body-emphasis" data-bind="text:Id"></h3>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card card-hover py-3 text-center bg-body-tertiary h-100 center">
+          <p class="card-text mb-1">Sex</p>
+          <h3 class="card-title mb-0 text-body-emphasis">
+            <span data-bind="visible: Sex() == 'F'">Female</span>
+            <span data-bind="visible: Sex() == 'M'">Male</span>
+          </h3>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card card-hover py-3 text-center bg-body-tertiary h-100 center">
+          <p class="card-text mb-1">Height</p>
+          <h3 class="card-title mb-0 text-body-emphasis"><span data-bind="text: Height"></span><span data-bind="hidden: Height() == 'NA'">&nbsp;cm</span></h3>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card card-hover py-3 text-center bg-body-tertiary h-100 center">
+          <p class="card-text mb-1">Weight</p>
+          <h3 class="card-title mb-0 text-body-emphasis"><span data-bind="text: Weight"></span><span data-bind="hidden: Weight() == 'NA'">&nbsp;kg</span></h3>
+        </div>
+      </div>
+      <div class="col-12 col-md-8 col-lg-6">
+        <div class="card card-hover py-3 text-center bg-body-tertiary h-100 center">
+          <p class="card-text mb-1">Birth</p>
+          <h3 class="card-title mb-0 text-body-emphasis" data-bind="text: Birth"></h3>
+        </div>
+      </div>
+      <div class="col-12 col-md-8 col-lg-6">
+        <div class="card card-hover py-3 text-center bg-body-tertiary h-100 center">
+          <p class="card-text mb-1">Death</p>
+          <h3 class="card-title mb-0 text-body-emphasis" data-bind="text: Death"></h3>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4" data-bind="visible: Summary">
+      <div class="col"></div>
+      <div class="col-auto">
+        <div class="btn btn-hover bg-body-secondary border rounded center text-body-emphasis" data-bind="click: getMoreData"><i class="fa-solid fa-arrow-down fa-lg"></i>&nbsp;&nbsp;Full details</div>
+      </div>
+      <div class="col"></div>
+    </div>
+    <div data-bind="hidden: Summary">
+      <div id="map" class="rounded mt-3 mb-3 w-100" style="height: 20rem;"></div>
+      <div class="accordion">
+        <div class="accordion-item" id="athletesAccordion">
+          <h2 class="accordion-header" id="headingOne">
+            <button id="AthletesArray" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Games (<span data-bind="text: Games().length"></span>)
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#athletesAccordion">
+            <div class="accordion-body row g-3" data-bind="foreach: Games">
+              <div class="col-12 card-hover p-3 rounded bg-body-tertiary border w-100 h-100 d-flex align-items-center">
+                <div class="card-body align-items-center h-auto">
+                  <div class="row align-items-center">
+                    <div class="col-auto pe-0">
+                      <img class="bg-body-secondary border rounded-circle" style="width: 3rem; height: 3rem; object-fit: cover;" data-bind="attr:{src: Photo, alt:Name, id:'img' + Id}">
+                    </div>
+                    <div class="col">
+                      <h5 class="card-title fw-semibold text-body-emphasis" data-bind="text: Name"></h5>
+                      <p class="card-text" data-bind="text: CityName + ', ' + CountryName"></p>
+                    </div>
+                    <div class="col-auto">
+                      <a class="btn py-1 px-2 bg-body-secondary border me-1" aria-label="See details" data-bind="attr: { href:'./gamesDetails.html?id=' + Id }"><i class="fa-solid fa-eye text-body-emphasis"></i></a>
+                      <a class="btn py-1 px-2 bg-body-secondary border" data-bind="click: function (data, event) {$parent.setGamesFavorites(Id)}" aria-label="Set as favorite"><i class="fa-solid fa-heart text-body-secondary" data-bind="attr: {id: 'fav_games_' + Id}"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item" id="competitionsAccordion">
+          <h2 class="accordion-header" id="headingTwo">
+            <button id="CompetitionsArray" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Competitions (<span data-bind="text: Competitions().length"></span>)
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#competitionsAccordion">
+            <div class="accordion-body row g-3" data-bind="foreach: Competitions">
+              <div class="col-12 card-hover p-3 rounded bg-body-tertiary border w-100 h-100 d-flex align-items-center">
+                <div class="card-body align-items-center h-auto">
+                  <div class="row align-items-center">
+                    <div class="col-auto pe-0">
+                      <img class="bg-body-secondary border rounded-circle" style="width: 3rem; height: 3rem; object-fit: cover;" data-bind="visible: Photo, attr:{src: Photo, alt:Name, id:'img' + Id}">
+                      <div class="bg-body-secondary border rounded-circle center" style="width: 3rem; height: 3rem;" data-bind="hidden: Photo"><i class="fa-solid fa-dumbbell"></i></div>
+                    </div>
+                    <div class="col">
+                      <h5 class="card-title fw-semibold text-body-emphasis" data-bind="text: Name"></h5>
+                      <p class="card-text" data-bind="text: 'Results: ' + Results"></p>
+                    </div>
+                    <div class="col-auto">
+                      <a class="btn py-1 px-2 bg-body-secondary border me-1" aria-label="See details" data-bind="attr: { href:'./competitionsDetails.html?id=' + Id }"><i class="fa-solid fa-eye text-body-emphasis"></i></a>
+                      <a class="btn py-1 px-2 bg-body-secondary border" data-bind="click: function (data, event) {$parent.setCompetitionsFavorites(Id)}" aria-label="Set as favorite"><i class="fa-solid fa-heart text-body-secondary" data-bind="attr: {id: 'fav_competitions_' + Id}"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item" id="medalsAccordion" data-bind="visible: Medals().length > 0">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Medals (<span data-bind="text: Medals().length"></span>)
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#medalsAccordion">
+            <div class="accordion-body row g-3" data-bind="foreach: Medals">
+              <div class="col-12 card-hover p-3 rounded bg-body-tertiary border w-100 h-100 d-flex align-items-center">
+                <div class="card-body align-items-center h-auto">
+                  <div class="row align-items-center">
+                    <div class="col-auto pe-0">
+                      <div class="bg-body-secondary border rounded-circle center" style="width: 3rem; height: 3rem;"><i class="fa-solid fa-medal"></i></div>
+                    </div>
+                    <div class="col">
+                      <h5 class="card-title fw-semibold text-body-emphasis" data-bind="text: MedalName"></h5>
+                      <p class="card-text" data-bind="text: 'Counter: ' + Counter"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item" id="modalitiesAccordion">
+          <h2 class="accordion-header" id="headingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+              Modalities (<span data-bind="text: Modalities().length"></span>)
+            </button>
+          </h2>
+          <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#modalitiesAccordion">
+            <div class="accordion-body row g-3" data-bind="foreach: Modalities">
+              <div class="col-12 card-hover p-3 rounded bg-body-tertiary border w-100 h-100 d-flex align-items-center">
+                <div class="card-body align-items-center h-auto">
+                  <div class="row align-items-center">
+                    <div class="col-auto pe-0">
+                      <img class="bg-body-secondary border rounded-circle" style="width: 3rem; height: 3rem; object-fit: cover;" data-bind="visible: Photo, attr:{src: Photo, alt:Name, id:'img' + Id}">
+                      <div class="bg-body-secondary border rounded-circle center" style="width: 3rem; height: 3rem;" data-bind="hidden: Photo"><i class="fa-solid fa-dumbbell"></i></div>
+                    </div>
+                    <div class="col">
+                      <h5 class="card-title fw-semibold text-body-emphasis" data-bind="text: Name"></h5>
+                      <p class="card-text" data-bind="text: 'Modality ID: ' + Id"></p>
+                    </div>
+                    <div class="col-auto">
+                      <a class="btn py-1 px-2 bg-body-secondary border me-1" aria-label="See details" data-bind="attr: { href:'./modalitiesDetails.html?id=' + Id }"><i class="fa-solid fa-eye text-body-emphasis"></i></a>
+                      <a class="btn py-1 px-2 bg-body-secondary border" data-bind="click: function (data, event) {$parent.setModalitiesFavorites(Id)}" aria-label="Set as favorite"><i class="fa-solid fa-heart text-body-secondary" data-bind="attr: {id: 'fav_modalities_' + Id}"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+            <img src="img/Olympic_rings.svg" height="30" /> Loading data...
+          </h5>
+        </div>
+        <div class="modal-body text-center">
+          <i class="fa-solid fa-spin fa-3x fa-refresh"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="errorToast" class="toast text-bg-danger position-fixed border-0" style="bottom: calc(53px + 16px); right: 16px;" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        <span class="fw-bold">API error: </span><span data-bind="text: error"></span>
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+
+  <!-- End of Work Area -->
+  <nav class="navbar bg-body-tertiary border-top fixed-bottom">
+    <div class="mx-auto">
+      <div class="wrapper">
+        <a href="https://www.facebook.com/olympics/">
+          <div id="facebook" class="button bg-body-secondary" style="color:#2374E1">
+            <div class="icon">
+                <i class="fa-brands fa-facebook-f"></i>
+            </div>
+            <span class="fs-6">Facebook</span>
+        </div>
+        </a>
+        <a href="https://twitter.com/olympics">
+          <div id="twitter" class="button bg-body-secondary" style="color:#1DA1F2">
+            <div class="icon">
+                <i class="fa-brands fa-twitter"></i>
+            </div>
+            <span class="fs-6">Twitter</span>
+          </div>
+        </a>
+        <a href="https://www.instagram.com/olympics/?hl=en">
+          <div id="instagram" class="button bg-body-secondary" style="color: #E1306C">
+            <div class="icon">
+                <i class="fa-brands fa-instagram"></i>
+            </div>
+            <span class="fs-6">Instagram</span>
+          </div>
+        </a>
+        <a href="https://www.youtube.com/olympics">
+          <div id="youtube" class="button bg-body-secondary" style="color: #ff0000">
+            <div class="icon">
+                <i class="fa-brands fa-youtube"></i>
+            </div>
+            <span class="fs-6">YouTube</span>
+          </div>
+        </a>
+     </div>
+    </div>
+  </nav>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js" integrity="sha512-2AL/VEauKkZqQU9BHgnv48OhXcJPx9vdzxN1JrKDVc4FPU/MEE/BZ6d9l0mP7VmvLsjtYwqiYQpDskK9dG8KBA==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js" integrity="sha512-TiMWaqipFi2Vqt4ugRzsF8oRoGFlFFuqIi30FFxEPNw58Ov9mOy6LgC05ysfkxwLE0xVeZtmr92wVg9siAFRWA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://unpkg.com/leaflet.markercluster.layersupport@2.0.1/dist/leaflet.markercluster.layersupport.js"></script>
+  <script src="js/athletesDetails.js"></script>
+  <script src="js/emoji.js"></script>
+</body>
+</html>

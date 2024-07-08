@@ -1,0 +1,45 @@
+.card-image-cover {
+    object-fit: cover;
+    height: 15rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+}
+
+.card-image-default {
+    height: 15rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+}
+
+.card-action-buttons {
+    height: 15rem;
+    backdrop-filter: blur(1.5rem);
+    -webkit-backdrop-filter: blur(1.5rem);
+    background-blend-mode: soft-light;
+    opacity: 0;
+}
+
+.card-action-buttons-each {
+    height: 3.5rem;
+    width: 3.5rem;
+    mix-blend-mode: soft-light;
+    border-radius: 50%;
+    box-shadow: none;
+    border: 0;
+    transition-property: border-radius, border-color, background-color, box-shadow, color;
+    transition-duration: 0.2s;
+}
+
+.card-action-buttons-each:hover {
+    border-radius: 25%;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+}
+
+.card-image-not-available {
+    position: absolute;
+    bottom: 1rem;
+}
